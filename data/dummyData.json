@@ -1,0 +1,33 @@
+
+{
+"courses" : [
+        {
+            "name":"html for beginners",
+            "price":199,
+            "image":"http://localhost:3000/assets/coding.png",
+            "rating":5,
+            "id":1
+        },
+        {
+            "name":"css for beginners",
+            "price":199,
+            "image":"http://localhost:3000/assets/coding.png",
+            "rating":5,
+            "id":2
+        },
+        {
+            "name":"js for beginners",
+            "price":499,
+            "image":"http://localhost:3000/assets/coding.png",
+            "rating":4,
+            "id":3
+        },
+        {
+            "name":"react for beginners",
+            "price":999,
+            "image":"http://localhost:3000/assets/coding.png",
+            "rating":5,
+            "id":4
+        }        
+    ]
+}

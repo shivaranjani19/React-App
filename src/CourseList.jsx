@@ -1,30 +1,13 @@
 import coding from "../data/assets/coding.png";
 import Course from "./Course";
-import { useState, useEffect } from "react";
+import useFetch from "./useFetch";
+
 
 function CourseList(){
 
-    const [courses,setCourses] = useState(null);
+    const {courses,dummy,error} = useFetch('http://localhost:3000/courses');
 
-    const [dummy,setDummy] = useState(true);
-
-    const [error,setError] = useState(null);
-
-    useEffect(()=>{    
-
-        fetch('http://localhost:3000/courses')
-        .then(response => {
-            if(!response.ok){
-                throw Error("couldnt retrive data");
-            }
-            console.log(response);
-            return response.json()
-        }).then(data => setCourses(data))
-        .catch((error) => {
-            console.log(error.message);
-            setError(error.message);
-    })
-    },[]);
+    
 
 
     //const vfmCourses = courses.filter((course) => course.price <200);
@@ -37,15 +20,17 @@ function CourseList(){
         const newCourse = courses.filter((course)=> course.id != id)
         setCourses(newCourse);
     }
+    
     if(!courses){
         return (
         <>
-        <p>{error}</p>
+        {!error && <p>loading...</p>}
+        {error && <p>{error}</p>}
         </>
     )
     }
 
-    
+
    const coursesList = courses.map(
     (course) => 
     <Course key={course.id} name={course.name}
